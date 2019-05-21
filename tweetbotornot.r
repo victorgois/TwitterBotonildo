@@ -9,13 +9,20 @@ source_python("script.py")
 
 divided_list <- list(divide_chunks(convert_col(), 10))
 
-print(divided_list) #divided_list está dividindo e printando corretamente
+#print(divided_list) #divided_list está dividindo e printando corretamente
 
-for (i in 1:7009){ #tentativa de executar o botornot dentro de um loop
+df <- as.data.frame(divided_list) #transformando minha lista em um dataframe
 
-  data <- botornot(get_timeline( c(divided_list), n=10))
+for (i in 1:nrow(df)){ #tentativa de executar o botornot dentro de um loop
 
-  data[order(data$prob_bot), ]
+  tmls <- c(df[i])
+  #print(tmls) ate aqui ta funcionando
+  dfList <- lapply(tmls, get_timelines)
+  data_list <- lapply(dfList, botornot)
+
+  #data <- unlist(data_list)
+  print(data_list)
+  #data[order(data$prob_bot), ]
 
  }
 
