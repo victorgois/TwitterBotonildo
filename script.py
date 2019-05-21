@@ -5,6 +5,8 @@ Created on Thu May 16 12:39:51 2019
 
 @author: victorgois
 """
+import pandas
+import numpy
 
 def convert_col():
 
@@ -19,32 +21,9 @@ def convert_col():
     #res = convert_col()
     #print(res)
 
-def divide_chunks(l, n):
 
-    for i in range(0, len(l), n):
-        
-        yield l[i:i + n]
+def divide_chunks(data, n): #Esta funcionando a divisão por 10
 
-def loop_for_chunks(divided_list):
+    chunks = [data[x:x+10] for x in range(0, len(data), 10)]
 
-    length = len(divided_list)
-    
-    for i in range(length):
-        
-        return i
-
-divided_list = list(divide_chunks(convert_col(), 10))
-
-
-def main (divided_list):
-
-    for each in divided_list:
-        
-        return (each)
-    
-length = len(divided_list)
-
-for i in divided_list:
-    result = i
-    print (result)
-    
+    return(chunks)
