@@ -12,7 +12,7 @@ def convert_col():
 
     import pandas
 
-    data = pandas.read_csv('Users#15m.csv', header=0)
+    data = pandas.read_csv('Users#15m.csv', header=0) #tentar header =1
 
     col_a = list(data.from_user)
 
