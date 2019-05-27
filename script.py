@@ -5,7 +5,7 @@ Created on Thu May 16 12:39:51 2019
 
 @author: victorgois
 """
-import pandas
+import pandas 
 import numpy
 
 def convert_col():
@@ -24,6 +24,10 @@ def convert_col():
 
 def divide_chunks(data, n): #Esta funcionando a divisão por 10
 
+    import pandas
+
     chunks = [data[x:x+10] for x in range(0, len(data), 10)]
+
+    #df_chunks = pd.DataFrame(chunks)
 
     return(chunks)

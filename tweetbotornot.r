@@ -11,28 +11,30 @@ divided_list <- divide_chunks(convert_col(), 10)
 tam_list <- length(divided_list)
 
 
-print(divided_list) #divided_list está dividindo e printando corretamente
+#print(divided_list) #divided_list está dividindo e printando corretamente
 
 tamanho.name <- function(divided_list){
 
-  df <- as.data.frame(divided_list) #transformando minha lista em um dataframe
+  #print(divided_list)
+
+  #df <- as.data.frame(divided_list) #transformando minha lista em um dataframe
   #print(df)
-  tam <- length(df)
+  tam_total <- length(divided_list)
+  tam_parcial <- 10
 
-  #print(tam)
-  for (j in 1:tam){
+  #print(tam_total)
+  res <- vector('list', 10)
 
-    for (i in 1:tam){
+  for (i in 1:tam_total){
+    for (j in 1:length(divided_list[i])){
 
-      as.character(df)
+      res <- divided_list[i]
+      print(res)
+      botornot_list <- by(res, 1:tam_parcial, botornot(get_timelines(res)))
 
-      botornot_list <- by(df, 1:tam, botornot(get_timelines(df)))
+     }
 
-    }
-
-   }
-
-
+  }
 
   return(botornot_list)
   #for (i in 1:tam){ #tentativa de executar o botornot dentro de um loop
