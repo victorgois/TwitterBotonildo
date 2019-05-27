@@ -23,60 +23,52 @@ tamanho.name <- function(divided_list){
   tam_parcial <- 10
 
   #print(tam_total)
-  res <- vector('list', 10)
+  res <- vector(mode = 'list', tam_parcial)
+  botornot_list <- vector(mode = 'list', tam_total)
 
   for (i in 1:tam_total){
-    for (j in 1:length(divided_list[i])){
 
-      res <- divided_list[i]
-      print(res)
-      botornot_list <- by(res, 1:tam_parcial, botornot(get_timelines(res)))
+    res <- divided_list[i]
+    #print(divided_list)
+    res <- paste(unlist(res),collapse="\', \'")
+    print(res)
+    #botornot_list[i] <- bylapply(res, tweetbotornot(res))
+    #print(botornot_list[i])
 
-     }
+    #botornot_list <- vector('list',res)
+    #for (j in 1:length(res)){
 
+    botornot_list[i] <- by(res, 1:1, botornot(get_timelines(res)))
+      #timelines <- get_timelines(res[j])
+      #print(botornot_list[j])
+
+      #print(botornot_list)
+     #}
   }
-
   return(botornot_list)
-  #for (i in 1:tam){ #tentativa de executar o botornot dentro de um loop
-  #  print(df[i])
-  #  dfList <- get_timelines(df[i], n=100 ) #lapply(df[i], get_timelines)
-  #  data_list <- botornot(df[i])
+}
 
-  #}
-  #print(data_list) #ate aqui ta funcionando
-  #precisa de função que transofrma df em um formato que de pra tirar o tamanho dele
-  #tmls.df <- as.data.frame(tmls) #converto
-  #print(tmls.df)
-  #return(tmls.df)
+#Aqui deve imprimir os dados do botornot <- lista
+
+visual_estatistico <- function(principal){
+
+  principal[order(principal$prob_bot), ]
+
+  return()
 
 }
 
+ resultado <- tamanho.name(divided_list)
 
-#botornot.resultado <- function(df){
+ resultado_estatistico <- visual_estatistico(resultado)
 
-#    dfList <- lapply(df, get_timelines)
-#    data_list <- lapply(dfList, botornot)
-#    return(data_list)
-
- #}
-
- resultado <- tamanho.name(divided_list) #tamanho recebe dataframe
-#   item.df <- c(df[i][j])
-
- print(resultado)
+ print(resultado_estatistico)
 
 
 
 #principal <-  botornot.resultado(tamanho.df)
 
-#Aqui deve imprimir os dados do botornot <- lista
 
-#visual_estatistico <- function(principal){
-
-#  principal[order(principal$prob_bot), ]
-
-# return()
-#}
 
 #print(visual_estatistico) #Aqui deve imprimir
   #data <- unlist(data_list)
